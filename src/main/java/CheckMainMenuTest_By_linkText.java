@@ -4,9 +4,10 @@ import org.openqa.selenium.WebElement;
 import utils.Utility;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class CheckMainMenuTest {
+public class CheckMainMenuTest_By_linkText {
     
     public static void main(String[] args) {
  
@@ -21,17 +22,16 @@ public class CheckMainMenuTest {
         //Get all main menu items
         List<WebElement> menuItems = driver.findElements(By.className("maintab"));
 
-        List<String> attributeValues = new ArrayList<>();
+        List<String> linkTexts = new ArrayList<>();
 
-        //Get value of data-submenu attribute for all main menu items
+        //Get link text for all main menu items
         for (WebElement element: menuItems) {
-            attributeValues.add(element.getAttribute("data-submenu"));
+            linkTexts.add(element.getText());
         }
 
 
-        for (String value: attributeValues) {
-            String selector = "li[data-submenu='" + value + "']";
-            WebElement element = driver.findElement(By.cssSelector(selector));
+        for (String text: linkTexts) {
+            WebElement element = driver.findElement(By.linkText(text));
             element.click();
             Utility.waiting(1000);
             title = driver.getTitle();
