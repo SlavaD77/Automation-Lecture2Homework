@@ -44,7 +44,7 @@ public class CheckMainMenuTest {
             Utility.waiting(1000);
             title = driver.getTitle();
             System.out.println(title);
-            //driver.navigate().refresh();
+            driver.navigate().refresh();
             Utility.waiting(1000);
             if (title.equals(driver.getTitle())) {
                 System.out.println("Refresh - OK ");
